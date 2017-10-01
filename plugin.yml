@@ -1,0 +1,16 @@
+name: WalkingWasteland
+version: 0.1.0
+main: com.SpectralVulpine.walkingwasteland.WalkingWasteland
+commands:
+  wwl:
+    description: Toggles Walking Wasteland mode
+    usage: /wwl
+    permission: walkingwasteland.commands
+    permission-message: You cannot toggle Walking Wasteland with your permission level.
+permissions:
+  walkingwasteland.on:
+    default: false
+  walkingwasteland.immune:
+    default: op
+  walkingwasteland.commands:
+    default: op
