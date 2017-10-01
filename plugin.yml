@@ -1,5 +1,5 @@
 name: WalkingWasteland
-version: 0.1.0
+version: 0.1.1
 main: com.SpectralVulpine.walkingwasteland.WalkingWasteland
 commands:
   wwl:
@@ -8,8 +8,6 @@ commands:
     permission: walkingwasteland.commands
     permission-message: You cannot toggle Walking Wasteland with your permission level.
 permissions:
-  walkingwasteland.on:
-    default: false
   walkingwasteland.immune:
     default: op
   walkingwasteland.commands:

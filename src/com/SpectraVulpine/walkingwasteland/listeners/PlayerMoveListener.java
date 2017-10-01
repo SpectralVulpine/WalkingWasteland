@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import com.SpectralVulpine.walkingwasteland.WalkingWasteland;
+import com.SpectralVulpine.walkingwasteland.managers.WastelandManager;
 
 public class PlayerMoveListener implements Listener {
 	
@@ -18,13 +19,12 @@ public class PlayerMoveListener implements Listener {
 	
 	@EventHandler
 	public static void onPlayerMove(PlayerMoveEvent e) {
-		Block standingBlock;
-		if (true) { // TODO: Make this only work if they have the permission
-			standingBlock = e.getPlayer().getLocation().subtract(0, 1, 0).getBlock();
+		if (WastelandManager.isWastelander(e.getPlayer())) {
+			Block standingBlock = e.getPlayer().getLocation().subtract(0, 1, 0).getBlock();
 			if (standingBlock.getType() == Material.GRASS) {
 				standingBlock.setType(Material.DIRT);
 			} else if (standingBlock.getType() == Material.WATER || standingBlock.getType() == Material.STATIONARY_WATER) {
-				standingBlock.setType(Material.ICE);
+				standingBlock.setType(Material.FROSTED_ICE); // frosted ice is like normal ice, but it melts a lot faster
 			}
 		}
 	}
