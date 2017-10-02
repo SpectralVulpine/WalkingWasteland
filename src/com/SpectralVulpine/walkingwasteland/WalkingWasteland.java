@@ -8,7 +8,7 @@ package com.SpectralVulpine.walkingwasteland;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.SpectraVulpine.walkingwasteland.listeners.PlayerMoveListener;
+import com.SpectralVulpine.walkingwasteland.listeners.PlayerMoveListener;
 import com.SpectralVulpine.walkingwasteland.managers.CommandManager;
 
 public class WalkingWasteland extends JavaPlugin {

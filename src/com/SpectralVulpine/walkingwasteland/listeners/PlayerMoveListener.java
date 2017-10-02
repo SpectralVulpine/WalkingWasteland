@@ -2,7 +2,7 @@
  * PlayerMoveListener - keeps track of when players walk around and makes the magic happen
  */
 
-package com.SpectraVulpine.walkingwasteland.listeners;
+package com.SpectralVulpine.walkingwasteland.listeners;
 
 import java.util.Random;
 
