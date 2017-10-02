@@ -14,7 +14,8 @@ import com.SpectralVulpine.walkingwasteland.WalkingWasteland;
 
 public class CommandManager implements CommandExecutor{
 	WalkingWasteland plugin;
-	// TODO: Add help string
+	String help = "§8§l[Walking Wasteland] §rType /wwl to toggle Wasteland mode on and off.\n"
+			+ "While in Wasteland mode, you will cause damage to your surroundings. Be careful!";
 
 	public CommandManager(WalkingWasteland ww) {
 		plugin = ww;
@@ -23,11 +24,15 @@ public class CommandManager implements CommandExecutor{
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("wwl") && sender instanceof Player) {
-			WastelandManager.toggleWastelander((Player) sender);
-			if (WastelandManager.isWastelander((Player) sender)) {
-				sender.sendMessage("§8§l[Walking Wasteland] §r§2You are now a Wastelander!");
-			} else {
-				sender.sendMessage("§8§l[Walking Wasteland] §r§6You are no longer a Wastelander.");
+			if (args.length == 0) {
+				WastelandManager.toggleWastelander((Player) sender);
+				if (WastelandManager.isWastelander((Player) sender)) {
+					sender.sendMessage("§8§l[Walking Wasteland] §r§2You are now a Wastelander!");
+				} else {
+					sender.sendMessage("§8§l[Walking Wasteland] §r§6You are no longer a Wastelander.");
+				}
+			} else if (args.length > 1 && args[0].equalsIgnoreCase("help")) {
+				sender.sendMessage(help);
 			}
 			return true;
 		} else { return false; }

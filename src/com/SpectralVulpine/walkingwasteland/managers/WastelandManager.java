@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.bukkit.entity.Player;
 
 public class WastelandManager {
+	// TODO: Use player metadata instead of this class
 	private static ArrayList<Player> wastelanders = new ArrayList<Player>();
 	
 	public static void addWastelander(Player p) {
