@@ -27,6 +27,7 @@ public class PlayerMoveListener implements Listener {
 	@SuppressWarnings("deprecation")
 	@EventHandler
 	public static void onPlayerMove(PlayerMoveEvent e) {
+		// TODO: Maybe make this runnable?
 		// TODO: Make nearby mobs take damage
 		// TODO: Optimize by checking distance before running code
 		if (WastelandManager.isWastelander(e.getPlayer())) {
@@ -62,7 +63,7 @@ public class PlayerMoveListener implements Listener {
 							} else if (b.getType() == Material.QUARTZ_ORE) {
 								b.setType(Material.NETHERRACK);
 							} else if (b.getType() == Material.SOUL_SAND) {
-								b.setType(Material.GRAVEL);
+								b.setType(Material.SAND);
 							} else if (b.getType() == Material.SOIL) {
 								b.setType(Material.DIRT);
 								b.setData((byte) 1);
