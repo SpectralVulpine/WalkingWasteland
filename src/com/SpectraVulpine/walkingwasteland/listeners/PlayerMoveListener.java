@@ -47,8 +47,6 @@ public class PlayerMoveListener implements Listener {
 								} else {
 									b.setType(Material.DEAD_BUSH);
 								}
-							} else if (b.getType() == Material.LEAVES || b.getType() == Material.LEAVES_2) {
-								b.breakNaturally();
 							} else if (b.getType() == Material.IRON_ORE || 
 									b.getType() == Material.LAPIS_ORE || 
 									b.getType() == Material.GOLD_ORE || 
@@ -63,16 +61,17 @@ public class PlayerMoveListener implements Listener {
 							} else if (b.getType() == Material.SOIL) {
 								b.setType(Material.DIRT);
 								b.setData((byte) 1);
-							} else if (b.getType() == Material.VINE) {
-								b.breakNaturally();
-							} else if (b.getType() == Material.SUGAR_CANE_BLOCK) {
-								b.breakNaturally();
 							} else if (b.getType() == Material.MOSSY_COBBLESTONE) {
 								b.setType(Material.COBBLESTONE);
 							} else if (b.getType() == Material.BROWN_MUSHROOM || 
-									b.getType() == Material.RED_MUSHROOM || 
+									b.getType() == Material.CACTUS || 
 									b.getType() == Material.HUGE_MUSHROOM_1 || 
-									b.getType() == Material.HUGE_MUSHROOM_2) {
+									b.getType() == Material.HUGE_MUSHROOM_2 || 
+									b.getType() == Material.LEAVES || 
+									b.getType() == Material.LEAVES_2 || 
+									b.getType() == Material.RED_MUSHROOM || 
+									b.getType() == Material.SUGAR_CANE_BLOCK || 
+									b.getType() == Material.VINE) {
 								b.breakNaturally();
 							} else if (b.getType() == Material.SMOOTH_BRICK) {
 								b.setData((byte) 2);
