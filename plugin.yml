@@ -8,7 +8,7 @@ commands:
     permission: walkingwasteland.commands
     permission-message: You cannot toggle Walking Wasteland with your permission level.
 permissions:
-  walkingwasteland.immune:
-    default: op
   walkingwasteland.commands:
+    default: op
+  walkingwasteland.immune:
     default: op
