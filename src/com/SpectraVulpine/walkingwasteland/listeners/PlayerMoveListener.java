@@ -1,3 +1,7 @@
+/*
+ * PlayerMoveListener - keeps track of when players walk around and makes the magic happen
+ */
+
 package com.SpectraVulpine.walkingwasteland.listeners;
 
 import java.util.Random;
@@ -24,6 +28,7 @@ public class PlayerMoveListener implements Listener {
 	@EventHandler
 	public static void onPlayerMove(PlayerMoveEvent e) {
 		// TODO: Make nearby mobs take damage
+		// TODO: Optimize by checking distance before running code
 		if (WastelandManager.isWastelander(e.getPlayer())) {
 			Random r = new Random();
 			Location center = e.getPlayer().getLocation();

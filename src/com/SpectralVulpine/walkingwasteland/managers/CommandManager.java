@@ -1,6 +1,5 @@
 /*
- * Command manager for PatLock plugin
- * Written by SpectralVulpine, like the rest of this mess.
+ * Command manager for Walking Wasteland plugin
  */
 
 package com.SpectralVulpine.walkingwasteland.managers;
@@ -15,7 +14,8 @@ import com.SpectralVulpine.walkingwasteland.WalkingWasteland;
 public class CommandManager implements CommandExecutor{
 	WalkingWasteland plugin;
 	String help = "§8§l[Walking Wasteland] §rType /wwl to toggle Wasteland mode on and off.\n"
-			+ "While in Wasteland mode, you will cause damage to your surroundings. Be careful!";
+			+ "§lNOTE: §rWhile in Wasteland mode, §nyou will cause uncontrollable damage "
+			+ "to your surroundings. §rBe careful!";
 
 	public CommandManager(WalkingWasteland ww) {
 		plugin = ww;
