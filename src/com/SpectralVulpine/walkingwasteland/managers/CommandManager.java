@@ -31,7 +31,7 @@ public class CommandManager implements CommandExecutor{
 				} else {
 					sender.sendMessage("§8§l[Walking Wasteland] §r§6You are no longer a Wastelander.");
 				}
-			} else if (args.length > 1 && args[0].equalsIgnoreCase("help")) {
+			} else if (args.length > 0 && args[0].equalsIgnoreCase("help")) {
 				sender.sendMessage(help);
 			}
 			return true;
