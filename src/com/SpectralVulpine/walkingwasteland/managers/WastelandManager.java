@@ -1,3 +1,8 @@
+/*
+ * WastelandManager - keeps track of which players are and aren't wastelanders currently.
+ * May be obsolete once I start using metadata
+ */
+
 package com.SpectralVulpine.walkingwasteland.managers;
 
 import java.util.ArrayList;
