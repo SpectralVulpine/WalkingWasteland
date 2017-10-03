@@ -1,0 +1,80 @@
+# ***************************
+# **** Walking Wasteland ****
+# *** Configuration File ****
+# ***************************
+
+# ---------------------------
+# --------- Effects ---------
+# ---------------------------
+
+# effectPower: The relative speed with which blocks around Wastelanders are corrupted. 
+# May be 1 to 100, inclusive. Higher values cause a more powerful effect, but can cause more lag on larger servers. Defaults to 20.
+effectPower: 20
+
+# effectRadius: The radius of the effect around a Wastelander. May be 1 or higher. Higher values are a larger radius. Defaults to 1.
+# WARNING: Setting this value high can cause massive lag! Be careful!
+effectRadius: 1
+
+# crackBrick: Whether or not Wastelanders crack stone brick blocks. May be true or false. Defaults to true.
+crackBrick: true
+
+# exorciseSand: Whether or not Wastelanders turn soul sand into normal sand. May be true or false. Defaults to true.
+exorciseSand: true
+
+# freezeWater: Whether or not Wastelanders freeze water that's near them. May be true or false. Defaults to true.
+freezeWater: true
+
+# killFarmland: Whether or not Wastelanders turn fertile farmland into coarse dirt. May be true or false. Defaults to true.
+killFarmland: true
+
+# killGrass: Whether or not Wastelanders turn grass blocks into dirt. May be true or false. Defaults to true.
+killGrass: true
+
+# killLeavesVines: Whether or not Wastelanders kill leaves and vines. May be true or false. Defaults to true.
+killLeavesVines: true
+
+# killMoss: Whether or not Wastelanders kill moss on cobblestone, reverting it to normal cobblestone.
+# May be true or false. Defaults to true.
+killMoss: true
+
+# killMushrooms: Whether or not Wastelanders kill mushrooms. May be true or false. Defaults to true.
+killMushrooms: true
+
+# killSmallPlants: Whether or not Wastelanders kill tall grass and flowers. May be true or false. Defaults to true.
+killSmallPlants: true
+
+# killTallPlants: Whether or not Wastelanders kill sugarcane and cacti. May be true or false. Defaults to true.
+killTallPlants: true
+
+# killMobs: Whether or not Wastelanders damage mobs around them. May be true or false. Defaults to true.
+killMobs: true
+
+# zombifyVillagers: Whether or not villagers killed by Wastelanders will resurrect as zombies. May be true or false. Defaults to true.
+zombifyVillagers: true
+
+# killPlayers: Whether or not Wastelanders damage players around them. May be true or false. Defaults to false.
+killPlayers: false
+
+# zombifyPlayers: Whether or not players killed by Wastelanders will resurrect as zombies. May be true or false. Defaults to true.
+zombifyPlayers: true
+
+# depleteOre: Whether or not Wastelanders can turn ore into coal, or nether quartz into netherrack. 
+# Overrides individual ore types' settings if set to false. May be true or false. Defaults to true.
+depleteOre: true
+
+
+# ---------------------------
+# ------ Ore Depletion ------
+# ---------------------------
+
+# All of these settings decide whether or not Wastelanders will deplete ore near them, turning it into coal or smooth stone.
+# These settings will only take effect if depleteOre above is set to true.
+# Each may be true or false. All default to true except diamond, which defaults to false.
+
+iron: true
+gold: true
+lapis: true
+redstone: true
+emerald: true
+quartz: true
+diamond: false

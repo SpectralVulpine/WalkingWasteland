@@ -4,6 +4,8 @@
 
 package com.SpectralVulpine.walkingwasteland.managers;
 
+import java.io.File;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,9 +15,10 @@ import com.SpectralVulpine.walkingwasteland.WalkingWasteland;
 
 public class CommandManager implements CommandExecutor{
 	WalkingWasteland plugin;
-	String help = "§8§l[Walking Wasteland] §rType /wwl to toggle Wasteland mode on and off.\n"
-			+ "§lNOTE: §rWhile in Wasteland mode, §nyou will cause uncontrollable damage "
-			+ "to your surroundings. §rBe careful!";
+	String help = "§r------------- §8§lWalking Wasteland Help §r-------------\n"
+			+ "§e/wwl §r- toggle Wasteland mode\n"
+			+ "§e/wwl regen §r- regenerate the configuration file\n"
+			+ "§e/wwl reload §r- reload the configuration file from disk\n";
 
 	public CommandManager(WalkingWasteland ww) {
 		plugin = ww;
@@ -33,6 +36,24 @@ public class CommandManager implements CommandExecutor{
 				}
 			} else if (args.length > 0 && args[0].equalsIgnoreCase("help")) {
 				sender.sendMessage(help);
+			} else if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
+				try {
+					plugin.reloadConfig();
+					ConfigManager.loadConfig(plugin.getConfig());
+					sender.sendMessage("§8§l[Walking Wasteland] §r§aConfiguration reloaded.");
+				} catch(Exception e) {
+					plugin.saveDefaultConfig();
+					plugin.reloadConfig();
+					ConfigManager.loadConfig(plugin.getConfig());
+					sender.sendMessage("§8§l[Walking Wasteland] §r§cConfiguration file invalid! Default configuration loaded instead.");
+				}
+			} else if (args.length > 0 && args[0].equalsIgnoreCase("regen")) {
+				File config = new File(plugin.getDataFolder(), "config.yml");
+				config.delete();
+				plugin.saveDefaultConfig();
+				plugin.reloadConfig();
+				ConfigManager.loadConfig(plugin.getConfig());
+				sender.sendMessage("§8§l[Walking Wasteland] §r§aConfiguration regenerated.");
 			}
 			return true;
 		} else { return false; }
