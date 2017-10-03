@@ -5,8 +5,10 @@
 
 package com.SpectralVulpine.walkingwasteland;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.SpectralVulpine.walkingwasteland.listeners.DeathListener;
 import com.SpectralVulpine.walkingwasteland.managers.CommandManager;
 import com.SpectralVulpine.walkingwasteland.managers.ConfigManager;
 import com.SpectralVulpine.walkingwasteland.runnables.WastelandTick;
@@ -20,7 +22,7 @@ public class WalkingWasteland extends JavaPlugin {
 		wTick = new WastelandTick();
 		exe = new CommandManager(this);
 		this.getCommand("wwl").setExecutor(exe);
-//		Bukkit.getPluginManager().registerEvents(new PlayerMoveListener(this), this);
+		Bukkit.getPluginManager().registerEvents(new DeathListener(this), this);
 		try {
 			ConfigManager.loadConfig(this.getConfig());
 		} catch(Exception e) {
