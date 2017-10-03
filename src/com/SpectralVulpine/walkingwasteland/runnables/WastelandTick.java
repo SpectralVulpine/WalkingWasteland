@@ -1,12 +1,16 @@
 package com.SpectralVulpine.walkingwasteland.runnables;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -25,6 +29,7 @@ public class WastelandTick extends BukkitRunnable {
 				Random rng = new Random();
 				Location center = p.getLocation();
 				int radius = ConfigManager.getEffectRadius();
+				List<Entity> entities = p.getNearbyEntities(radius, radius, radius);
 				Location bottomCorner = center.subtract(radius, radius, radius);
 				for (int x = 0; x < radius * 2 + 1; x++) {
 					for (int y = 0; y < radius * 2 + 2; y++) { // y is one higher because the player is 2 blocks tall
@@ -84,6 +89,26 @@ public class WastelandTick extends BukkitRunnable {
 								}
 							}
 						}
+					}
+				}
+				for (Entity e : entities) {
+					if (ConfigManager.isKillMobs() && e instanceof LivingEntity && 
+							e.getType() != EntityType.ZOMBIE && 
+							e.getType() != EntityType.SKELETON && 
+							e.getType() != EntityType.STRAY && 
+							e.getType() != EntityType.WITHER_SKELETON && 
+							e.getType() != EntityType.HUSK && 
+							e.getType() != EntityType.WITHER && 
+							e.getType() != EntityType.PIG_ZOMBIE && 
+							e.getType() != EntityType.ZOMBIE_VILLAGER && 
+							e.getType() != EntityType.ZOMBIE_HORSE && 
+							e.getType() != EntityType.SKELETON_HORSE && 
+							e.getType() != EntityType.PLAYER) {
+						LivingEntity victim = (LivingEntity) e;
+						victim.damage(ConfigManager.getEffectDamage() * 2, p);
+					} else if (!e.hasPermission("walkingwasteland.immune") && ConfigManager.isKillPlayers() && e instanceof Player) {
+						Player victim = (Player) e;
+						victim.damage(ConfigManager.getEffectDamage() * 2, p);
 					}
 				}
 			}

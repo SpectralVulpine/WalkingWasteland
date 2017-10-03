@@ -13,6 +13,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 public class ConfigManager {
 	
 	private static int effectPower, effectRadius;
+	private static double effectDamage;
 	private static boolean crackBrick, exorciseSand, freezeWater, killFarmland, killGrass, killLeavesVines, 
 	killMoss, killMushrooms, killSmallPlants, killTallPlants, killMobs, zombifyVillagers, killPlayers, 
 	zombifyPlayers, depleteOre, iron, gold, lapis, redstone, emerald, quartz, diamond;
@@ -40,6 +41,17 @@ public class ConfigManager {
 		} catch(Exception e) {
 			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] effectRadius in the configuration file is set to an illegal value! Using default");
 			effectRadius = 1;
+		}
+		
+		try {
+			if (config.getDouble("effectDamage") < 0) {
+				throw new Exception();
+			} else {
+				effectDamage = config.getDouble("effectDamage");
+			}
+		} catch(Exception e) {
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] effectDamage in the configuration file is set to an illegal value! Using default");
+			effectDamage = 0.5;
 		}
 		
 		try {
@@ -203,6 +215,10 @@ public class ConfigManager {
 
 	public static int getEffectRadius() {
 		return effectRadius;
+	}
+	
+	public static double getEffectDamage() {
+		return effectDamage;
 	}
 
 	public static boolean isCrackBrick() {
