@@ -196,4 +196,100 @@ public class ConfigManager {
 			diamond = false;
 		}
 	}
+
+	public static int getEffectPower() {
+		return effectPower;
+	}
+
+	public static int getEffectRadius() {
+		return effectRadius;
+	}
+
+	public static boolean isCrackBrick() {
+		return crackBrick;
+	}
+
+	public static boolean isExorciseSand() {
+		return exorciseSand;
+	}
+
+	public static boolean isFreezeWater() {
+		return freezeWater;
+	}
+
+	public static boolean isKillFarmland() {
+		return killFarmland;
+	}
+
+	public static boolean isKillGrass() {
+		return killGrass;
+	}
+
+	public static boolean isKillLeavesVines() {
+		return killLeavesVines;
+	}
+
+	public static boolean isKillMoss() {
+		return killMoss;
+	}
+
+	public static boolean isKillMushrooms() {
+		return killMushrooms;
+	}
+
+	public static boolean isKillSmallPlants() {
+		return killSmallPlants;
+	}
+
+	public static boolean isKillTallPlants() {
+		return killTallPlants;
+	}
+
+	public static boolean isKillMobs() {
+		return killMobs;
+	}
+
+	public static boolean isZombifyVillagers() {
+		return zombifyVillagers;
+	}
+
+	public static boolean isKillPlayers() {
+		return killPlayers;
+	}
+
+	public static boolean isZombifyPlayers() {
+		return zombifyPlayers;
+	}
+
+	public static boolean isDepleteOre() {
+		return depleteOre;
+	}
+
+	public static boolean isIron() {
+		return iron;
+	}
+
+	public static boolean isGold() {
+		return gold;
+	}
+
+	public static boolean isLapis() {
+		return lapis;
+	}
+
+	public static boolean isRedstone() {
+		return redstone;
+	}
+
+	public static boolean isEmerald() {
+		return emerald;
+	}
+
+	public static boolean isQuartz() {
+		return quartz;
+	}
+
+	public static boolean isDiamond() {
+		return diamond;
+	}
 }

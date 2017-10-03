@@ -20,8 +20,12 @@ public class WalkingWasteland extends JavaPlugin {
 		exe = new CommandManager(this);
 		this.getCommand("wwl").setExecutor(exe);
 		Bukkit.getPluginManager().registerEvents(new PlayerMoveListener(this), this);
-		this.saveDefaultConfig();
-		this.reloadConfig();
-		ConfigManager.loadConfig(this.getConfig());
+		try {
+			ConfigManager.loadConfig(this.getConfig());
+		} catch(Exception e) {
+			this.saveDefaultConfig();
+			this.reloadConfig();
+			ConfigManager.loadConfig(this.getConfig());
+		}
 	}	
 }
