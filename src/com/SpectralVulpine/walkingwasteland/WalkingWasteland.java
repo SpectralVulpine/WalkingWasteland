@@ -23,13 +23,9 @@ public class WalkingWasteland extends JavaPlugin {
 		exe = new CommandManager(this);
 		this.getCommand("wwl").setExecutor(exe);
 		Bukkit.getPluginManager().registerEvents(new DeathListener(this), this);
-		try {
-			ConfigManager.loadConfig(this.getConfig());
-		} catch(Exception e) {
-			this.saveDefaultConfig();
-			this.reloadConfig();
-			ConfigManager.loadConfig(this.getConfig());
-		}
+		this.saveDefaultConfig();
+		this.reloadConfig();
+		ConfigManager.loadConfig(this.getConfig());
 		wTick.runTaskTimer(this, 0, 5);
 	}	
 }

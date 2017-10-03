@@ -22,7 +22,6 @@ public class WastelandTick extends BukkitRunnable {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void run() {
-		// TODO: Make nearby mobs take damage
 		Collection<? extends Player> players = Bukkit.getOnlinePlayers();
 		for (Player p : players) {
 			if (WastelandManager.isWastelander(p)) {
