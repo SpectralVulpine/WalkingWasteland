@@ -67,3 +67,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+bin/com/SpectralVulpine/walkingwasteland/managers/CommandManager.class
+bin/com/SpectralVulpine/walkingwasteland/WalkingWasteland.class

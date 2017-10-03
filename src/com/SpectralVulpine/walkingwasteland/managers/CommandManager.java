@@ -26,7 +26,7 @@ public class CommandManager implements CommandExecutor{
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (cmd.getName().equalsIgnoreCase("wwl") && sender instanceof Player) {
+		if (cmd.getName().equalsIgnoreCase("wwl") && sender instanceof Player && sender.hasPermission("walkingwasteland.commands")) {
 			if (args.length == 0) {
 				WastelandManager.toggleWastelander((Player) sender);
 				if (WastelandManager.isWastelander((Player) sender)) {
