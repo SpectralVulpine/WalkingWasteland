@@ -69,7 +69,7 @@ depleteOre: true
 
 # All of these settings decide whether or not Wastelanders will deplete ore near them, turning it into coal or smooth stone.
 # These settings will only take effect if depleteOre above is set to true.
-# Each may be true or false. All default to true except diamondOre, which defaults to false.
+# Each may be true or false. All default to true except diamond, which defaults to false.
 
 iron: true
 gold: true

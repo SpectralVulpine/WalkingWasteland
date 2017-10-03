@@ -34,36 +34,37 @@ public class PlayerMoveListener implements Listener {
 		if (WastelandManager.isWastelander(e.getPlayer())) {
 			Random r = new Random();
 			Location center = e.getPlayer().getLocation();
-			Location bottomCorner = center.subtract(1, 1, 1);
-			for (int x = 0; x < ConfigManager.getEffectRadius() * 2 + 1; x++) {
-				for (int y = 0; y < ConfigManager.getEffectRadius() * 2 + 2; y++) { // y is one higher because the player is 2 blocks tall
-					for (int z = 0; z < ConfigManager.getEffectRadius() * 2 + 1; z++) {
+			int radius = ConfigManager.getEffectRadius();
+			Location bottomCorner = center.subtract(radius, radius, radius);
+			for (int x = 0; x < radius * 2 + 1; x++) {
+				for (int y = 0; y < radius * 2 + 2; y++) { // y is one higher because the player is 2 blocks tall
+					for (int z = 0; z < radius * 2 + 1; z++) {
 						// Iterates through all blocks in a player-defined area, one row at a time
 						if (r.nextInt(100) < ConfigManager.getEffectPower()) {
 							Block b = bottomCorner.clone().add(x, y, z).getBlock();
 							if (ConfigManager.isKillGrass() && b.getType() == Material.GRASS) {
 								b.setType(Material.DIRT);
 							} else if (ConfigManager.isFreezeWater() && 
-									b.getType() == Material.WATER || b.getType() == Material.STATIONARY_WATER) {
+									(b.getType() == Material.WATER || b.getType() == Material.STATIONARY_WATER)) {
 								b.setType(Material.FROSTED_ICE); // frosted ice is like normal ice, but it melts a lot faster
 							} else if (ConfigManager.isKillSmallPlants() && 
-									b.getType() == Material.LONG_GRASS || 
+									(b.getType() == Material.LONG_GRASS || 
 									b.getType() == Material.RED_ROSE || 
 									b.getType() == Material.YELLOW_FLOWER || 
-									b.getType() == Material.DOUBLE_PLANT) {
+									b.getType() == Material.DOUBLE_PLANT)) {
 								if (r.nextInt(2) < 1) {
 									b.breakNaturally();
 								} else {
 									b.setType(Material.DEAD_BUSH);
 								}
 							} else if (ConfigManager.isDepleteOre() && 
-									(ConfigManager.isIron() && b.getType() == Material.IRON_ORE) || 
+									((ConfigManager.isIron() && b.getType() == Material.IRON_ORE) || 
 									(ConfigManager.isLapis() && b.getType() == Material.LAPIS_ORE) || 
 									(ConfigManager.isGold() && b.getType() == Material.GOLD_ORE) || 
 									(ConfigManager.isRedstone() && (b.getType() == Material.REDSTONE_ORE || 
 									b.getType() == Material.GLOWING_REDSTONE_ORE)) || 
 									(ConfigManager.isEmerald() && b.getType() == Material.EMERALD_ORE) || 
-									(ConfigManager.isDiamond() && b.getType() == Material.DIAMOND_ORE)) {
+									(ConfigManager.isDiamond() && b.getType() == Material.DIAMOND_ORE))) {
 								if (r.nextInt(2) < 1) {
 									b.setType(Material.COAL_ORE);
 								} else {
