@@ -1,3 +1,8 @@
+/*
+ * Death listener for Walking Wasteland plugin
+ * Responsible for zombifying those who die via wasteland effect
+ */
+
 package com.SpectralVulpine.walkingwasteland.listeners;
 
 import org.bukkit.entity.Entity;
