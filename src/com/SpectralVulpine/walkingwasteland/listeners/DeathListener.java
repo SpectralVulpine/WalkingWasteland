@@ -41,7 +41,7 @@ public class DeathListener implements Listener {
 	@EventHandler
 	public void onMobDeath(EntityDeathEvent e) {
 		// Villagers who die via Wastelander are resurrected as zombies
-		if (ConfigManager.isZombifyVillagers() && WastelandManager.isWastelander(e.getEntity().getKiller()) && e.getEntityType() == EntityType.VILLAGER) {
+		if (ConfigManager.isZombifyVillagers() && e.getEntityType() == EntityType.VILLAGER && WastelandManager.isWastelander(e.getEntity().getKiller())) {
 			Villager deceased = (Villager) e.getEntity();
 			Profession job = deceased.getProfession();
 			deceased.remove();

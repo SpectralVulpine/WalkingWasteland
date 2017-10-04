@@ -105,7 +105,7 @@ public class WastelandTick extends BukkitRunnable {
 							e.getType() != EntityType.PLAYER) {
 						LivingEntity victim = (LivingEntity) e;
 						victim.damage(ConfigManager.getEffectDamage() * 2, p);
-					} else if (!e.hasPermission("walkingwasteland.immune") && ConfigManager.isKillPlayers() && e instanceof Player) {
+					} else if (ConfigManager.isKillPlayers() && !e.hasPermission("walkingwasteland.immune") && e instanceof Player) {
 						Player victim = (Player) e;
 						victim.damage(ConfigManager.getEffectDamage() * 2, p);
 					}
