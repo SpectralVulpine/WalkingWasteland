@@ -34,8 +34,6 @@ public class CommandManager implements CommandExecutor{
 				} else {
 					sender.sendMessage("§8§l[Walking Wasteland] §r§6You are no longer a Wastelander.");
 				}
-			} else if (args.length > 0 && args[0].equalsIgnoreCase("help")) {
-				sender.sendMessage(help);
 			} else if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
 				try {
 					plugin.reloadConfig();
@@ -54,8 +52,34 @@ public class CommandManager implements CommandExecutor{
 				plugin.reloadConfig();
 				ConfigManager.loadConfig(plugin.getConfig());
 				sender.sendMessage("§8§l[Walking Wasteland] §r§aConfiguration regenerated.");
+			} else {
+				sender.sendMessage(help);
 			}
 			return true;
-		} else { return false; }
+		} else if (cmd.getName().equalsIgnoreCase("wwl") && !(sender instanceof Player)) {
+			if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
+				try {
+					plugin.reloadConfig();
+					ConfigManager.loadConfig(plugin.getConfig());
+					sender.sendMessage("§8§l[Walking Wasteland] §r§aConfiguration reloaded.");
+				} catch(Exception e) {
+					plugin.saveDefaultConfig();
+					plugin.reloadConfig();
+					ConfigManager.loadConfig(plugin.getConfig());
+					sender.sendMessage("§8§l[Walking Wasteland] §r§cConfiguration file invalid! Default configuration loaded instead.");
+				}
+			} else if (args.length > 0 && args[0].equalsIgnoreCase("regen")) {
+				File config = new File(plugin.getDataFolder(), "config.yml");
+				config.delete();
+				plugin.saveDefaultConfig();
+				plugin.reloadConfig();
+				ConfigManager.loadConfig(plugin.getConfig());
+				sender.sendMessage("§8§l[Walking Wasteland] §r§aConfiguration regenerated.");
+			} else {
+				sender.sendMessage(help);
+			}
+			return true;
+		}
+		else { return false; }
 	}	
 }

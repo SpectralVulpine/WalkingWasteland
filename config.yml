@@ -8,12 +8,16 @@
 # ---------------------------
 
 # effectPower: The relative speed with which blocks around Wastelanders are corrupted. 
-# May be 1 to 100, inclusive. Higher values cause a more powerful effect, but can cause more lag on larger servers. Defaults to 20.
+# May be an integer, 1 to 100, inclusive. Higher values cause a more powerful effect, but can cause more lag on larger servers. Defaults to 20.
 effectPower: 20
 
-# effectRadius: The radius of the effect around a Wastelander. May be 1 or higher. Higher values are a larger radius. Defaults to 1.
+# effectRadius: The radius of the effect around a Wastelander. May be an integer, 1 or higher. Higher values are a larger radius. Defaults to 1.
 # WARNING: Setting this value high can cause massive lag! Be careful!
 effectRadius: 1
+
+# effectDamage: The amount of damage dealt per 5 ticks (0.25 seconds on most servers) from standing inside a Wastelander zone, in hearts. 
+# May be any value greater than 0. Defaults to 0.5 (half a heart).
+effectDamage: 0.5
 
 # crackBrick: Whether or not Wastelanders crack stone brick blocks. May be true or false. Defaults to true.
 crackBrick: true
