@@ -17,8 +17,8 @@ public class CommandManager implements CommandExecutor{
 	WalkingWasteland plugin;
 	String help = "§r------------- §8§lWalking Wasteland Help §r-------------\n"
 			+ "§e/wwl §r- toggle Wasteland mode\n"
-			+ "§e/wwl regen §r- regenerate the configuration file\n"
-			+ "§e/wwl reload §r- reload the configuration file from disk\n";
+			+ "§e/wwl reload §r- reload the configuration file from disk\n"
+			+ "§e/wwl reset §r- reset the configuration file to defaults\n";
 
 	public CommandManager(WalkingWasteland ww) {
 		plugin = ww;
@@ -45,13 +45,13 @@ public class CommandManager implements CommandExecutor{
 					ConfigManager.loadConfig(plugin.getConfig());
 					sender.sendMessage("§8§l[Walking Wasteland] §r§cConfiguration file invalid! Default configuration loaded instead.");
 				}
-			} else if (args.length > 0 && args[0].equalsIgnoreCase("regen")) {
+			} else if (args.length > 0 && args[0].equalsIgnoreCase("reset")) {
 				File config = new File(plugin.getDataFolder(), "config.yml");
 				config.delete();
 				plugin.saveDefaultConfig();
 				plugin.reloadConfig();
 				ConfigManager.loadConfig(plugin.getConfig());
-				sender.sendMessage("§8§l[Walking Wasteland] §r§aConfiguration regenerated.");
+				sender.sendMessage("§8§l[Walking Wasteland] §r§aConfiguration reset to defaults.");
 			} else {
 				sender.sendMessage(help);
 			}

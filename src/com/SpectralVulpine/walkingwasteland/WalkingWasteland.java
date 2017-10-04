@@ -1,5 +1,5 @@
 /*
- * Walking Wasteland: Kill things by walking around!
+ * Walking Wasteland: Spread death and decay just by walking around!
  * Written by SpectralVulpine (www.spectralvulpine.com)
  */
 

@@ -142,7 +142,7 @@ public class ConfigManager {
 			killPlayers = config.getBoolean("killPlayers");
 		} catch(Exception e) {
 			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killPlayers in the configuration file is set to an illegal value! Using default");
-			killPlayers = false;
+			killPlayers = true;
 		}
 		
 		try {

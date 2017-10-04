@@ -57,7 +57,7 @@ killMobs: true
 zombifyVillagers: true
 
 # killPlayers: Whether or not Wastelanders damage players around them. May be true or false. Defaults to false.
-killPlayers: false
+killPlayers: true
 
 # zombifyPlayers: Whether or not players killed by Wastelanders will resurrect as zombies. May be true or false. Defaults to true.
 zombifyPlayers: true
