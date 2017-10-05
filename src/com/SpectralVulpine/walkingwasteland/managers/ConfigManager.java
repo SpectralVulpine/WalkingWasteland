@@ -35,7 +35,7 @@ public class ConfigManager {
 				effectPower = config.getInt("effectPower");
 			}
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] effectPower in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] effectPower in the configuration file is set to an illegal value! Using default.");
 			effectPower = 20;
 		}
 		
@@ -46,7 +46,7 @@ public class ConfigManager {
 				effectRadius = config.getInt("effectRadius");
 			}
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] effectRadius in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] effectRadius in the configuration file is set to an illegal value! Using default.");
 			effectRadius = 1;
 		}
 		
@@ -57,161 +57,161 @@ public class ConfigManager {
 				effectDamage = config.getDouble("effectDamage");
 			}
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] effectDamage in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] effectDamage in the configuration file is set to an illegal value! Using default.");
 			effectDamage = 0.5;
 		}
 		
 		try {
 			crackBrick = config.getBoolean("crackBrick");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] crackBrick in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] crackBrick in the configuration file is set to an illegal value! Using default.");
 			crackBrick = true;
 		}
 		
 		try {
 			exorciseSand = config.getBoolean("exorciseSand");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] exorciseSand in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] exorciseSand in the configuration file is set to an illegal value! Using default.");
 			exorciseSand = true;
 		}
 		
 		try {
 			freezeWater = config.getBoolean("freezeWater");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] freezeWater in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] freezeWater in the configuration file is set to an illegal value! Using default.");
 			freezeWater = true;
 		}
 		
 		try {
 			killFarmland = config.getBoolean("killFarmland");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killFarmland in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killFarmland in the configuration file is set to an illegal value! Using default.");
 			killFarmland = true;
 		}
 		
 		try {
 			killGrass = config.getBoolean("killGrass");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killGrass in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killGrass in the configuration file is set to an illegal value! Using default.");
 			killGrass = true;
 		}
 		
 		try {
 			killLeavesVines = config.getBoolean("killLeavesVines");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killLeavesVines in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killLeavesVines in the configuration file is set to an illegal value! Using default.");
 			killLeavesVines = true;
 		}
 		
 		try {
 			killMoss = config.getBoolean("killMoss");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killMoss in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killMoss in the configuration file is set to an illegal value! Using default.");
 			killMoss = true;
 		}
 		
 		try {
 			killMushrooms = config.getBoolean("killMushrooms");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killMushrooms in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killMushrooms in the configuration file is set to an illegal value! Using default.");
 			killMushrooms = true;
 		}
 		
 		try {
 			killSmallPlants = config.getBoolean("killSmallPlants");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killSmallPlants in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killSmallPlants in the configuration file is set to an illegal value! Using default.");
 			killSmallPlants = true;
 		}
 		
 		try {
 			killTallPlants = config.getBoolean("killTallPlants");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killTallPlants in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killTallPlants in the configuration file is set to an illegal value! Using default.");
 			killTallPlants = true;
 		}
 		
 		try {
 			killMobs = config.getBoolean("killMobs");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killMobs in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killMobs in the configuration file is set to an illegal value! Using default.");
 			killMobs = true;
 		}
 		
 		try {
 			zombifyVillagers = config.getBoolean("zombifyVillagers");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] zombifyVillagers in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] zombifyVillagers in the configuration file is set to an illegal value! Using default.");
 			zombifyVillagers = true;
 		}
 		
 		try {
 			killPlayers = config.getBoolean("killPlayers");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killPlayers in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killPlayers in the configuration file is set to an illegal value! Using default.");
 			killPlayers = true;
 		}
 		
 		try {
 			zombifyPlayers = config.getBoolean("zombifyPlayers");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] zombifyPlayers in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] zombifyPlayers in the configuration file is set to an illegal value! Using default.");
 			zombifyPlayers = true;
 		}
 		
 		try {
 			depleteOre = config.getBoolean("depleteOre");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] depleteOre in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] depleteOre in the configuration file is set to an illegal value! Using default.");
 			depleteOre = true;
 		}
 		
 		try {
 			iron = config.getBoolean("iron");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] iron in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] iron in the configuration file is set to an illegal value! Using default.");
 			iron = true;
 		}
 		
 		try {
 			gold = config.getBoolean("gold");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] gold in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] gold in the configuration file is set to an illegal value! Using default.");
 			gold = true;
 		}
 		
 		try {
 			lapis = config.getBoolean("lapis");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] lapis in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] lapis in the configuration file is set to an illegal value! Using default.");
 			lapis = true;
 		}
 		
 		try {
 			redstone = config.getBoolean("redstone");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] redstone in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] redstone in the configuration file is set to an illegal value! Using default.");
 			redstone = true;
 		}
 		
 		try {
 			emerald = config.getBoolean("emerald");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] emerald in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] emerald in the configuration file is set to an illegal value! Using default.");
 			emerald = true;
 		}
 
 		try {
 			quartz = config.getBoolean("quartz");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] quartz in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] quartz in the configuration file is set to an illegal value! Using default.");
 			quartz = true;
 		}
 		
 		try {
 			diamond = config.getBoolean("diamond");
 		} catch(Exception e) {
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] diamond in the configuration file is set to an illegal value! Using default");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] diamond in the configuration file is set to an illegal value! Using default.");
 			diamond = false;
 		}
 	}
@@ -220,12 +220,12 @@ public class ConfigManager {
 		// Reload config file from disk
 		try {
 			load();
-			Bukkit.getLogger().log(Level.INFO, "[Walking Wasteland] Configuration reloaded");
-		} catch(Exception e) {
+			Bukkit.getLogger().log(Level.INFO, "[Walking Wasteland] Configuration reloaded.");
+		} catch(Exception e) { // may be irrelevant because of the way that load() deals with configuration files - check first few lines of load()
 			plugin.saveDefaultConfig();
 			plugin.reloadConfig();
 			load();
-			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] Configuration file invalid! Using defaults instead");
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] Configuration file invalid! Using defaults instead.");
 		}
 	}
 	
@@ -236,7 +236,7 @@ public class ConfigManager {
 		plugin.saveDefaultConfig();
 		plugin.reloadConfig();
 		load();
-		Bukkit.getLogger().log(Level.INFO, "[Walking Wasteland] Configuration file reset to defaults");
+		Bukkit.getLogger().log(Level.INFO, "[Walking Wasteland] Configuration reset to defaults.");
 	}
 
 	public static int getEffectPower() {

@@ -45,10 +45,8 @@ public class CommandManager implements CommandExecutor{
 		} else if (cmd.getName().equalsIgnoreCase("wwl") && !(sender instanceof Player)) {
 			if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
 				ConfigManager.reload();
-				sender.sendMessage("§8§l[Walking Wasteland] §aConfiguration reloaded.");
 			} else if (args.length > 0 && args[0].equalsIgnoreCase("reset")) {
 				ConfigManager.reset();
-				sender.sendMessage("§8§l[Walking Wasteland] §aConfiguration reset to defaults.");
 			} else {
 				sender.sendMessage(help);
 			}
