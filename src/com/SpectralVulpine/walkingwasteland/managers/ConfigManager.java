@@ -5,10 +5,13 @@
 
 package com.SpectralVulpine.walkingwasteland.managers;
 
+import java.io.File;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+
+import com.SpectralVulpine.walkingwasteland.WalkingWasteland;
 
 public class ConfigManager {
 	
@@ -17,10 +20,14 @@ public class ConfigManager {
 	private static boolean crackBrick, exorciseSand, freezeWater, killFarmland, killGrass, killLeavesVines, 
 	killMoss, killMushrooms, killSmallPlants, killTallPlants, killMobs, zombifyVillagers, killPlayers, 
 	zombifyPlayers, depleteOre, iron, gold, lapis, redstone, emerald, quartz, diamond;
+	public static WalkingWasteland plugin = (WalkingWasteland) Bukkit.getPluginManager().getPlugin("WalkingWasteland");
 	
-	public static void loadConfig(FileConfiguration config) {
+	public static void load() {
 		// Validate inputs for the ints - they should be default if they're invalid
 		// On a side note, UGH.
+		plugin.saveDefaultConfig();
+		plugin.reloadConfig();
+		FileConfiguration config = plugin.getConfig();
 		try {
 			if (config.getInt("effectPower") < 1 || config.getInt("effectPower") > 100) {
 				throw new Exception();
@@ -207,6 +214,29 @@ public class ConfigManager {
 			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] diamond in the configuration file is set to an illegal value! Using default");
 			diamond = false;
 		}
+	}
+	
+	public static void reload() {
+		// Reload config file from disk
+		try {
+			load();
+			Bukkit.getLogger().log(Level.INFO, "[Walking Wasteland] Configuration reloaded");
+		} catch(Exception e) {
+			plugin.saveDefaultConfig();
+			plugin.reloadConfig();
+			load();
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] Configuration file invalid! Using defaults instead");
+		}
+	}
+	
+	public static void reset() {
+		// Reset config file to default
+		File config = new File(plugin.getDataFolder(), "config.yml");
+		config.delete();
+		plugin.saveDefaultConfig();
+		plugin.reloadConfig();
+		load();
+		Bukkit.getLogger().log(Level.INFO, "[Walking Wasteland] Configuration file reset to defaults");
 	}
 
 	public static int getEffectPower() {
