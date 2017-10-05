@@ -30,5 +30,5 @@ This will reset the configuration file to its default values.
 
 ### Download
 
-[GitHub](https://github.com/SpectralVulpine/WalkingWasteland/releases)
-[SpigotMC](https://www.spigotmc.org/resources/walking-wasteland.47981/)
+* [GitHub](https://github.com/SpectralVulpine/WalkingWasteland/releases)
+* [SpigotMC](https://www.spigotmc.org/resources/walking-wasteland.47981/)
