@@ -14,12 +14,18 @@ import com.SpectralVulpine.walkingwasteland.WalkingWasteland;
 public class WastelandManager {
 	public static WalkingWasteland plugin = (WalkingWasteland) Bukkit.getPluginManager().getPlugin("WalkingWasteland");
 	
-	public static void toggleWastelander(Player p) {
-		if (p.hasMetadata("Wastelander")) {
-			p.removeMetadata("Wastelander", plugin);
-		} else {
-			p.setMetadata("Wastelander", new FixedMetadataValue(plugin, "waste"));
-		}
+	public static boolean toggleWastelander(Player p) {
+		// Toggle the Wastelander status of this player. Returns whether or not a change was made.
+		if (p instanceof Player) {
+			if (p.hasMetadata("Wastelander")) {
+				p.removeMetadata("Wastelander", plugin);
+				p.sendMessage("§8§l[Walking Wasteland] §6You are no longer a Wastelander.");
+			} else {
+				p.setMetadata("Wastelander", new FixedMetadataValue(plugin, "waste"));
+				p.sendMessage("§8§l[Walking Wasteland] §2You are now a Wastelander!");
+			}
+			return true;
+		} else { return false; }
 	}
 	
 	public static boolean isWastelander(Player p) {
