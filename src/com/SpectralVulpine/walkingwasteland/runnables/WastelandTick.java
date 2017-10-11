@@ -1,5 +1,6 @@
 package com.SpectralVulpine.walkingwasteland.runnables;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
@@ -18,7 +19,23 @@ import com.SpectralVulpine.walkingwasteland.managers.ConfigManager;
 import com.SpectralVulpine.walkingwasteland.managers.WastelandManager;
 
 public class WastelandTick extends BukkitRunnable {
-
+	
+	private static ArrayList<EntityType> mobKillExempt = new ArrayList<EntityType>();
+	
+	public WastelandTick() {
+		mobKillExempt.add(EntityType.ZOMBIE);
+		mobKillExempt.add(EntityType.SKELETON);
+		mobKillExempt.add(EntityType.HUSK);
+		mobKillExempt.add(EntityType.STRAY);
+		mobKillExempt.add(EntityType.WITHER_SKELETON);
+		mobKillExempt.add(EntityType.WITHER);
+		mobKillExempt.add(EntityType.PIG_ZOMBIE);
+		mobKillExempt.add(EntityType.ZOMBIE_VILLAGER);
+		mobKillExempt.add(EntityType.ZOMBIE_HORSE);
+		mobKillExempt.add(EntityType.SKELETON_HORSE);
+		mobKillExempt.add(EntityType.PLAYER);
+	}
+	
 	@SuppressWarnings("deprecation")
 	@Override
 	public void run() {
@@ -91,18 +108,7 @@ public class WastelandTick extends BukkitRunnable {
 					}
 				}
 				for (Entity e : entities) {
-					if (ConfigManager.isKillMobs() && e instanceof LivingEntity && 
-							e.getType() != EntityType.ZOMBIE && 
-							e.getType() != EntityType.SKELETON && 
-							e.getType() != EntityType.STRAY && 
-							e.getType() != EntityType.WITHER_SKELETON && 
-							e.getType() != EntityType.HUSK && 
-							e.getType() != EntityType.WITHER && 
-							e.getType() != EntityType.PIG_ZOMBIE && 
-							e.getType() != EntityType.ZOMBIE_VILLAGER && 
-							e.getType() != EntityType.ZOMBIE_HORSE && 
-							e.getType() != EntityType.SKELETON_HORSE && 
-							e.getType() != EntityType.PLAYER) {
+					if (ConfigManager.isKillMobs() && e instanceof LivingEntity && !mobKillExempt.contains(e.getType())) {
 						LivingEntity victim = (LivingEntity) e;
 						victim.damage(ConfigManager.getEffectDamage() * 2, p);
 					} else if (ConfigManager.isKillPlayers() && !e.hasPermission("walkingwasteland.immune") && e instanceof Player) {
