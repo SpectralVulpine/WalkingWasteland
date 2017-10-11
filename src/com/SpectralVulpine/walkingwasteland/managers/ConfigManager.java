@@ -17,8 +17,8 @@ public class ConfigManager {
 	
 	private static int effectPower, effectRadius;
 	private static double effectDamage;
-	private static boolean crackBrick, exorciseSand, freezeWater, killFarmland, killGrass, killLeavesVines, 
-	killMoss, killMushrooms, killSmallPlants, killTallPlants, killMobs, zombifyVillagers, killPlayers, 
+	private static boolean crackBrick, exorciseSand, freezeWater, freezeLava, extinguishFire, killFarmland, killGrass, 
+	killLeavesVines, killMoss, killMushrooms, killSmallPlants, killTallPlants, killMobs, zombifyVillagers, killPlayers, 
 	zombifyPlayers, depleteOre, iron, gold, lapis, redstone, emerald, quartz, diamond;
 	public static WalkingWasteland plugin = (WalkingWasteland) Bukkit.getPluginManager().getPlugin("WalkingWasteland");
 	
@@ -80,6 +80,20 @@ public class ConfigManager {
 		} catch(Exception e) {
 			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] freezeWater in the configuration file is set to an illegal value! Using default.");
 			freezeWater = true;
+		}
+		
+		try {
+			freezeLava = config.getBoolean("freezeLava");
+		} catch(Exception e) {
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] freezeLava in the configuration file is set to an illegal value! Using default.");
+			freezeLava = true;
+		}
+		
+		try {
+			extinguishFire = config.getBoolean("extinguishFire");
+		} catch(Exception e) {
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] extinguishFire in the configuration file is set to an illegal value! Using default.");
+			extinguishFire = true;
 		}
 		
 		try {
@@ -261,6 +275,14 @@ public class ConfigManager {
 
 	public static boolean isFreezeWater() {
 		return freezeWater;
+	}
+	
+	public static boolean isFreezeLava() {
+		return freezeLava;
+	}
+	
+	public static boolean isExtinguishFire() {
+		return extinguishFire;
 	}
 
 	public static boolean isKillFarmland() {

@@ -19,9 +19,9 @@ import com.SpectralVulpine.walkingwasteland.managers.ConfigManager;
 import com.SpectralVulpine.walkingwasteland.managers.WastelandManager;
 
 public class WastelandTick extends BukkitRunnable {
-	
+
 	private static ArrayList<EntityType> mobKillExempt = new ArrayList<EntityType>();
-	
+
 	public WastelandTick() {
 		mobKillExempt.add(EntityType.ZOMBIE);
 		mobKillExempt.add(EntityType.SKELETON);
@@ -35,7 +35,7 @@ public class WastelandTick extends BukkitRunnable {
 		mobKillExempt.add(EntityType.SKELETON_HORSE);
 		mobKillExempt.add(EntityType.PLAYER);
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public void run() {
@@ -58,6 +58,10 @@ public class WastelandTick extends BukkitRunnable {
 								} else if (ConfigManager.isFreezeWater() && 
 										(b.getType() == Material.WATER || b.getType() == Material.STATIONARY_WATER)) {
 									b.setType(Material.FROSTED_ICE); // frosted ice is like normal ice, but it melts a lot faster
+								} else if (ConfigManager.isFreezeLava() && b.getType() == Material.STATIONARY_LAVA) {
+									b.setType(Material.OBSIDIAN);
+								} else if (ConfigManager.isFreezeLava() && b.getType() == Material.LAVA) {
+									b.setType(Material.STONE);
 								} else if (ConfigManager.isKillSmallPlants() && 
 										(b.getType() == Material.LONG_GRASS || 
 										b.getType() == Material.RED_ROSE || 
@@ -98,7 +102,8 @@ public class WastelandTick extends BukkitRunnable {
 										b.getType() == Material.SUGAR_CANE_BLOCK)) || 
 										(ConfigManager.isKillLeavesVines() && (b.getType() == Material.LEAVES || 
 										b.getType() == Material.LEAVES_2 || 
-										b.getType() == Material.VINE))) {
+										b.getType() == Material.VINE)) || 
+										(ConfigManager.isExtinguishFire() && b.getType() == Material.FIRE)) {
 									b.breakNaturally();
 								} else if (ConfigManager.isCrackBrick() && b.getType() == Material.SMOOTH_BRICK) {
 									b.setData((byte) 2);

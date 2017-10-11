@@ -28,6 +28,12 @@ exorciseSand: true
 # freezeWater: Whether or not Wastelanders freeze water that's near them. May be true or false. Defaults to true.
 freezeWater: true
 
+# freezeLava: Whether or not Wastelanders freeze lava that's near them into obsidian or stone. May be true or false. Defaults to true.
+freezeLava: true
+
+# extinguishFire: Whether or not Wastelanders put out fires near them. May be true or false. Defaults to true.
+extinguishFire: true
+
 # killFarmland: Whether or not Wastelanders turn fertile farmland into coarse dirt. May be true or false. Defaults to true.
 killFarmland: true
 
