@@ -15,11 +15,11 @@ import com.SpectralVulpine.walkingwasteland.WalkingWasteland;
 
 public class ConfigManager {
 	
-	private static int effectPower, effectRadius;
+	private static int effectPower, effectRadius, potionMultiplier;
 	private static double effectDamage;
 	private static boolean crackBrick, exorciseSand, freezeWater, freezeLava, extinguishFire, killFarmland, killGrass, 
-	killLeavesVines, killMoss, killMushrooms, killSmallPlants, killTallPlants, killMobs, zombifyVillagers, killPlayers, 
-	zombifyPlayers, depleteOre, iron, gold, lapis, redstone, emerald, quartz, diamond;
+	killLeavesVines, killMoss, killMushrooms, killSmallPlants, killTallPlants, slowMobs, weakenMobs, killMobs, 
+	zombifyVillagers, killPlayers, zombifyPlayers, depleteOre, iron, gold, lapis, redstone, emerald, quartz, diamond;
 	public static WalkingWasteland plugin = (WalkingWasteland) Bukkit.getPluginManager().getPlugin("WalkingWasteland");
 	
 	public static void load() {
@@ -59,6 +59,17 @@ public class ConfigManager {
 		} catch(Exception e) {
 			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] effectDamage in the configuration file is set to an illegal value! Using default.");
 			effectDamage = 0.5;
+		}
+		
+		try {
+			if (config.getInt("potionMultiplier") < 1 || config.getInt("potionMultiplier") > 127) {
+				throw new Exception();
+			} else {
+				potionMultiplier = config.getInt("potionMultiplier");
+			}
+		} catch(Exception e) {
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] potionMultiplier in the configuration file is set to an illegal value! Using default.");
+			potionMultiplier = 1;
 		}
 		
 		try {
@@ -143,6 +154,20 @@ public class ConfigManager {
 		} catch(Exception e) {
 			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killTallPlants in the configuration file is set to an illegal value! Using default.");
 			killTallPlants = true;
+		}
+		
+		try {
+			slowMobs = config.getBoolean("slowMobs");
+		} catch(Exception e) {
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] slowMobs in the configuration file is set to an illegal value! Using default.");
+			slowMobs = true;
+		}
+		
+		try {
+			weakenMobs = config.getBoolean("weakenMobs");
+		} catch(Exception e) {
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] weakenMobs in the configuration file is set to an illegal value! Using default.");
+			weakenMobs = true;
 		}
 		
 		try {
@@ -264,6 +289,10 @@ public class ConfigManager {
 	public static double getEffectDamage() {
 		return effectDamage;
 	}
+	
+	public static int getPotionMultiplier() {
+		return potionMultiplier;
+	}
 
 	public static boolean isCrackBrick() {
 		return crackBrick;
@@ -311,6 +340,14 @@ public class ConfigManager {
 
 	public static boolean isKillTallPlants() {
 		return killTallPlants;
+	}
+
+	public static boolean isSlowMobs() {
+		return slowMobs;
+	}
+
+	public static boolean isWeakenMobs() {
+		return weakenMobs;
 	}
 
 	public static boolean isKillMobs() {

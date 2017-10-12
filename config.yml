@@ -28,7 +28,7 @@ exorciseSand: true
 # freezeWater: Whether or not Wastelanders freeze water that's near them. May be true or false. Defaults to true.
 freezeWater: true
 
-# freezeLava: Whether or not Wastelanders freeze lava that's near them into obsidian or stone. May be true or false. Defaults to true.
+# freezeLava: Whether or not Wastelanders freeze lava that's near them into obsidian. May be true or false. Defaults to true.
 freezeLava: true
 
 # extinguishFire: Whether or not Wastelanders put out fires near them. May be true or false. Defaults to true.
@@ -55,6 +55,15 @@ killSmallPlants: true
 
 # killTallPlants: Whether or not Wastelanders kill sugarcane and cacti. May be true or false. Defaults to true.
 killTallPlants: true
+
+# slowMobs: Whether or not Wastelanders afflict mobs around then with the "Slowness" status effect. May be true or false. Defaults to true.
+slowMobs: true
+
+# weakenMobs: Whether or not Wastelanders afflict mobs around them with the "Weakness" status effect. May be true or false. Defaults to true.
+weakenMobs: true
+
+# potionMultiplier: The factor by which the above status effects are amplified. May be an integer greater than 1 and less than 127, inclusive. Defaults to 1.
+potionMultiplier: 1
 
 # killMobs: Whether or not Wastelanders damage mobs around them. May be true or false. Defaults to true.
 killMobs: true

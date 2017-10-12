@@ -13,6 +13,8 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.SpectralVulpine.walkingwasteland.managers.ConfigManager;
@@ -113,13 +115,21 @@ public class WastelandTick extends BukkitRunnable {
 					}
 				}
 				for (Entity e : entities) {
+					LivingEntity victim;
 					if (ConfigManager.isKillMobs() && e instanceof LivingEntity && !mobKillExempt.contains(e.getType())) {
-						LivingEntity victim = (LivingEntity) e;
-						victim.damage(ConfigManager.getEffectDamage() * 2, p);
+						victim = (LivingEntity) e;
 					} else if (ConfigManager.isKillPlayers() && !e.hasPermission("walkingwasteland.immune") && e instanceof Player) {
-						Player victim = (Player) e;
-						victim.damage(ConfigManager.getEffectDamage() * 2, p);
+						victim = (Player) e;
+					} else { break; }
+					
+					// Slow or weaken the mob or player, and then damage them
+					if (ConfigManager.isSlowMobs() && !victim.hasPotionEffect(PotionEffectType.SLOW)) {
+						victim.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 60, ConfigManager.getPotionMultiplier()));
 					}
+					if (ConfigManager.isWeakenMobs() && !victim.hasPotionEffect(PotionEffectType.WEAKNESS)) {
+						victim.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 60, ConfigManager.getPotionMultiplier()));
+					}
+					victim.damage(ConfigManager.getEffectDamage() * 2, p);
 				}
 			}
 		}
