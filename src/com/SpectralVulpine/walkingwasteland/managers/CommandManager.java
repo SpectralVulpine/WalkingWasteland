@@ -28,7 +28,49 @@ public class CommandManager implements CommandExecutor{
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		// TODO: Make more efficient to cut down on code reuse
-		if (cmd.getName().equalsIgnoreCase("wwl") && sender instanceof Player && sender.hasPermission("walkingwasteland.commands")) {
+		if (cmd.getName().equalsIgnoreCase("wwl") && sender.hasPermission("walkingwasteland.commands")) {
+			if (args.length == 0 && sender instanceof Player) {
+				// By default, toggle the user's Wasteland status
+				WastelandManager.toggleWastelander((Player) sender);
+			} else if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
+				// Reload configuration file from disk
+				ConfigManager.reload();
+				sender.sendMessage("§8§l[Walking Wasteland] §aConfiguration reloaded.");
+			} else if (args.length > 0 && args[0].equalsIgnoreCase("reset")) {
+				// Reset configuration file to default
+				ConfigManager.reset();
+				sender.sendMessage("§8§l[Walking Wasteland] §aConfiguration reset to defaults.");
+			} else if (args.length > 0 && args[0].equalsIgnoreCase("list")) {
+				// List all currently active Wastelanders
+				String msg = "§8§l[Walking Wasteland] §eCurrently active Wastelanders:";
+				for (Player p : Bukkit.getOnlinePlayers()) {
+					if (WastelandManager.isWastelander(p)) {
+						msg += "\n§7" + p.getDisplayName();
+					}
+				}
+				if (msg == "§8§l[Walking Wasteland] §eCurrently active Wastelanders:") {
+					sender.sendMessage("§8§l[Walking Wasteland] §eNo Wastelanders are currently active.");
+				} else {
+					sender.sendMessage(msg);
+				}
+			} else if (args.length > 1 && args[0].equalsIgnoreCase("toggle")) {
+				Player p = Bukkit.getPlayer(args[1]);
+				boolean completed = WastelandManager.toggleWastelander(p);
+				if (completed) {
+					if (WastelandManager.isWastelander(p)) {
+						sender.sendMessage("§8§l[Walking Wasteland] §2" + p.getDisplayName() + " is now a Wastelander!");
+					} else {
+						sender.sendMessage("§8§l[Walking Wasteland] §6" + p.getDisplayName() + " is no longer a Wastelander.");
+					}
+				} else {
+					sender.sendMessage("§8§l[Walking Wasteland] §cCould not find player with name " + args[1] + "!");
+				}
+			} else {
+				sender.sendMessage(help);
+			}
+			return true;
+		} else { return false;}
+		/*if (cmd.getName().equalsIgnoreCase("wwl") && sender instanceof Player && sender.hasPermission("walkingwasteland.commands")) {
 			if (args.length == 0) {
 				// By default, toggle the current player
 				WastelandManager.toggleWastelander((Player) sender);
@@ -106,6 +148,6 @@ public class CommandManager implements CommandExecutor{
 			}
 			return true;
 		}
-		else { return false; }
+		else { return false; }*/
 	}	
 }

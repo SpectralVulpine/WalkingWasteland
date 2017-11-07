@@ -5,8 +5,8 @@
 
 package com.SpectralVulpine.walkingwasteland.listeners;
 
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Villager.Profession;
 import org.bukkit.entity.ZombieVillager;
@@ -14,6 +14,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.ItemStack;
 
 import com.SpectralVulpine.walkingwasteland.WalkingWasteland;
 import com.SpectralVulpine.walkingwasteland.managers.ConfigManager;
@@ -29,10 +30,18 @@ public class DeathListener implements Listener {
 	
 	@EventHandler
 	public void onPlayerDeath(PlayerDeathEvent e) {
-		// Players who die via Wastelander are resurrected as zombies
+		// Players who die via Wastelander are resurrected as zombies, with the armor they were wearing.
 		if (!e.getEntity().hasPermission("walkingwasteland.immune") && ConfigManager.isZombifyPlayers() && WastelandManager.isWastelander(e.getEntity().getKiller())) {
-			e.setDeathMessage(e.getEntity().getDisplayName() + " was killed by " + e.getEntity().getKiller().getDisplayName() + ", whose deadly aura resurrected them as a zombie!");
-			Entity playerZombie = e.getEntity().getLocation().getWorld().spawnEntity(e.getEntity().getLocation(), EntityType.ZOMBIE);
+			String deathMessage;
+			if (e.getDeathMessage().contains("shot by")) {
+				deathMessage = e.getEntity().getDisplayName() + " was shot down by " + e.getEntity().getKiller().getDisplayName() + ", whose deadly aura resurrected them as a zombie!";
+			} else {
+				deathMessage = e.getEntity().getDisplayName() + " was killed by " + e.getEntity().getKiller().getDisplayName() + ", whose deadly aura resurrected them as a zombie!";
+			}
+			e.setDeathMessage(deathMessage);
+			ItemStack[] armor = e.getEntity().getEquipment().getArmorContents();
+			LivingEntity playerZombie = (LivingEntity)e.getEntity().getLocation().getWorld().spawnEntity(e.getEntity().getLocation(), EntityType.ZOMBIE);
+			playerZombie.getEquipment().setArmorContents(armor);
 			playerZombie.setCustomName(e.getEntity().getDisplayName());
 			playerZombie.setCustomNameVisible(true);
 		}
