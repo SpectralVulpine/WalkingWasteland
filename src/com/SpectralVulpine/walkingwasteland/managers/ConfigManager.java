@@ -15,11 +15,11 @@ import com.SpectralVulpine.walkingwasteland.WalkingWasteland;
 
 public class ConfigManager {
 	
-	private static int effectPower, effectRadius;
+	private static int effectPower, effectRadius, potionMultiplier;
 	private static double effectDamage;
-	private static boolean crackBrick, exorciseSand, freezeWater, killFarmland, killGrass, killLeavesVines, 
-	killMoss, killMushrooms, killSmallPlants, killTallPlants, killMobs, zombifyVillagers, killPlayers, 
-	zombifyPlayers, depleteOre, iron, gold, lapis, redstone, emerald, quartz, diamond;
+	private static boolean crackBrick, exorciseSand, freezeWater, freezeLava, extinguishFire, killFarmland, killGrass, 
+	killLeavesVines, killMoss, killMushrooms, killSmallPlants, killTallPlants, slowMobs, weakenMobs, killMobs, 
+	zombifyVillagers, killPlayers, zombifyPlayers, depleteOre, iron, gold, lapis, redstone, emerald, quartz, diamond;
 	public static WalkingWasteland plugin = (WalkingWasteland) Bukkit.getPluginManager().getPlugin("WalkingWasteland");
 	
 	public static void load() {
@@ -62,6 +62,17 @@ public class ConfigManager {
 		}
 		
 		try {
+			if (config.getInt("potionMultiplier") < 1 || config.getInt("potionMultiplier") > 128) {
+				throw new Exception();
+			} else {
+				potionMultiplier = config.getInt("potionMultiplier");
+			}
+		} catch(Exception e) {
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] potionMultiplier in the configuration file is set to an illegal value! Using default.");
+			potionMultiplier = 1;
+		}
+		
+		try {
 			crackBrick = config.getBoolean("crackBrick");
 		} catch(Exception e) {
 			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] crackBrick in the configuration file is set to an illegal value! Using default.");
@@ -80,6 +91,20 @@ public class ConfigManager {
 		} catch(Exception e) {
 			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] freezeWater in the configuration file is set to an illegal value! Using default.");
 			freezeWater = true;
+		}
+		
+		try {
+			freezeLava = config.getBoolean("freezeLava");
+		} catch(Exception e) {
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] freezeLava in the configuration file is set to an illegal value! Using default.");
+			freezeLava = true;
+		}
+		
+		try {
+			extinguishFire = config.getBoolean("extinguishFire");
+		} catch(Exception e) {
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] extinguishFire in the configuration file is set to an illegal value! Using default.");
+			extinguishFire = true;
 		}
 		
 		try {
@@ -129,6 +154,20 @@ public class ConfigManager {
 		} catch(Exception e) {
 			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] killTallPlants in the configuration file is set to an illegal value! Using default.");
 			killTallPlants = true;
+		}
+		
+		try {
+			slowMobs = config.getBoolean("slowMobs");
+		} catch(Exception e) {
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] slowMobs in the configuration file is set to an illegal value! Using default.");
+			slowMobs = true;
+		}
+		
+		try {
+			weakenMobs = config.getBoolean("weakenMobs");
+		} catch(Exception e) {
+			Bukkit.getLogger().log(Level.WARNING, "[Walking Wasteland] weakenMobs in the configuration file is set to an illegal value! Using default.");
+			weakenMobs = true;
 		}
 		
 		try {
@@ -250,6 +289,11 @@ public class ConfigManager {
 	public static double getEffectDamage() {
 		return effectDamage;
 	}
+	
+	public static int getPotionMultiplier() {
+		// Returns the value - 1 so that the player can put 2 in and get Effect 2 out.
+		return potionMultiplier - 1;
+	}
 
 	public static boolean isCrackBrick() {
 		return crackBrick;
@@ -261,6 +305,14 @@ public class ConfigManager {
 
 	public static boolean isFreezeWater() {
 		return freezeWater;
+	}
+	
+	public static boolean isFreezeLava() {
+		return freezeLava;
+	}
+	
+	public static boolean isExtinguishFire() {
+		return extinguishFire;
 	}
 
 	public static boolean isKillFarmland() {
@@ -289,6 +341,14 @@ public class ConfigManager {
 
 	public static boolean isKillTallPlants() {
 		return killTallPlants;
+	}
+
+	public static boolean isSlowMobs() {
+		return slowMobs;
+	}
+
+	public static boolean isWeakenMobs() {
+		return weakenMobs;
 	}
 
 	public static boolean isKillMobs() {

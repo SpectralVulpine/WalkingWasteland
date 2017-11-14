@@ -4,20 +4,21 @@
 # ***************************
 
 # ---------------------------
-# --------- Effects ---------
+# ---------- Aura -----------
 # ---------------------------
 
 # effectPower: The relative speed with which blocks around Wastelanders are corrupted. 
-# May be an integer, 1 to 100, inclusive. Higher values cause a more powerful effect, but can cause more lag on larger servers. Defaults to 35.
-effectPower: 35
+# May be an integer, 1 to 100, inclusive. Higher values cause a more powerful effect, but can cause more lag on larger servers. Defaults to 40.
+effectPower: 40
 
-# effectRadius: The radius of the effect around a Wastelander. May be an integer, 1 or higher. Higher values are a larger radius. Defaults to 1.
+# effectRadius: The radius of the effect around a Wastelander. May be an integer, 1 or higher. Higher values are a larger radius. Defaults to 3.
 # WARNING: Setting this value high can cause massive lag! Be careful!
-effectRadius: 1
+effectRadius: 3
 
-# effectDamage: The amount of damage dealt per 5 ticks (0.25 seconds on most servers) from standing inside a Wastelander zone, in hearts. 
-# May be any value greater than 0. Defaults to 0.5 (half a heart).
-effectDamage: 0.5
+
+# ---------------------------
+# --------- Effects ---------
+# ---------------------------
 
 # crackBrick: Whether or not Wastelanders crack stone brick blocks. May be true or false. Defaults to true.
 crackBrick: true
@@ -25,8 +26,8 @@ crackBrick: true
 # exorciseSand: Whether or not Wastelanders turn soul sand into normal sand. May be true or false. Defaults to true.
 exorciseSand: true
 
-# freezeWater: Whether or not Wastelanders freeze water that's near them. May be true or false. Defaults to true.
-freezeWater: true
+# extinguishFire: Whether or not Wastelanders put out fires near them. May be true or false. Defaults to true.
+extinguishFire: true
 
 # killFarmland: Whether or not Wastelanders turn fertile farmland into coarse dirt. May be true or false. Defaults to true.
 killFarmland: true
@@ -50,6 +51,36 @@ killSmallPlants: true
 # killTallPlants: Whether or not Wastelanders kill sugarcane and cacti. May be true or false. Defaults to true.
 killTallPlants: true
 
+
+# ---------------------------
+# --------- Fluids ----------
+# ---------------------------
+
+# freezeWater: Whether or not Wastelanders freeze water that's near them. May be true or false. Defaults to true.
+freezeWater: true
+
+# freezeLava: Whether or not Wastelanders freeze lava that's near them into obsidian. May be true or false. Defaults to true.
+freezeLava: true
+
+
+# ---------------------------
+# ------ Mobs/Players -------
+# ---------------------------
+
+# effectDamage: The amount of damage dealt per 5 ticks (0.25 seconds on most servers) from standing inside a Wastelander zone, in hearts. 
+# May be any value greater than 0. Defaults to 1 (one heart).
+effectDamage: 1
+
+# potionMultiplier: The factor by which the above status effects are amplified; i.e. a potionMultiplier of 3 will lead to Weakness III.
+# May be an integer greater than 1 and less than 128, inclusive. Defaults to 1.
+potionMultiplier: 1
+
+# slowMobs: Whether or not Wastelanders afflict mobs around then with the "Slowness" status effect. May be true or false. Defaults to true.
+slowMobs: true
+
+# weakenMobs: Whether or not Wastelanders afflict mobs around them with the "Weakness" status effect. May be true or false. Defaults to true.
+weakenMobs: true
+
 # killMobs: Whether or not Wastelanders damage mobs around them. May be true or false. Defaults to true.
 killMobs: true
 
@@ -62,18 +93,18 @@ killPlayers: true
 # zombifyPlayers: Whether or not players killed by Wastelanders will resurrect as zombies. May be true or false. Defaults to true.
 zombifyPlayers: true
 
-# depleteOre: Whether or not Wastelanders can turn ore into coal, or nether quartz into netherrack. 
-# Overrides individual ore types' settings if set to false. May be true or false. Defaults to true.
-depleteOre: true
-
 
 # ---------------------------
 # ------ Ore Depletion ------
 # ---------------------------
 
 # All of these settings decide whether or not Wastelanders will deplete ore near them, turning it into coal or smooth stone.
-# These settings will only take effect if depleteOre above is set to true.
+# These settings will only take effect if depleteOre is set to true. Each setting corresponds to the ore type for which it is named.
 # Each may be true or false. All default to true except diamond, which defaults to false.
+
+# depleteOre: Whether or not Wastelanders can deplete any kind of ore at all. If this is false, none of the below settings take effect. 
+# May be true or false. Defaults to true.
+depleteOre: true
 
 iron: true
 gold: true

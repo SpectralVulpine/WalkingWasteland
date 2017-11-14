@@ -13,15 +13,18 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.SpectralVulpine.walkingwasteland.managers.ConfigManager;
+import com.SpectralVulpine.walkingwasteland.managers.ParticleManager;
 import com.SpectralVulpine.walkingwasteland.managers.WastelandManager;
 
 public class WastelandTick extends BukkitRunnable {
-	
+
 	private static ArrayList<EntityType> mobKillExempt = new ArrayList<EntityType>();
-	
+
 	public WastelandTick() {
 		mobKillExempt.add(EntityType.ZOMBIE);
 		mobKillExempt.add(EntityType.SKELETON);
@@ -35,7 +38,7 @@ public class WastelandTick extends BukkitRunnable {
 		mobKillExempt.add(EntityType.SKELETON_HORSE);
 		mobKillExempt.add(EntityType.PLAYER);
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public void run() {
@@ -53,11 +56,16 @@ public class WastelandTick extends BukkitRunnable {
 							// Iterates through all blocks in a player-defined area, one row at a time
 							if (rng.nextInt(100) < ConfigManager.getEffectPower()) {
 								Block b = bottomCorner.clone().add(x, y, z).getBlock();
+								ParticleManager.wastelandAura(b.getLocation());
 								if (ConfigManager.isKillGrass() && b.getType() == Material.GRASS) {
 									b.setType(Material.DIRT);
 								} else if (ConfigManager.isFreezeWater() && 
 										(b.getType() == Material.WATER || b.getType() == Material.STATIONARY_WATER)) {
 									b.setType(Material.FROSTED_ICE); // frosted ice is like normal ice, but it melts a lot faster
+								} else if (ConfigManager.isFreezeLava() && b.getType() == Material.STATIONARY_LAVA) {
+									b.setType(Material.OBSIDIAN);
+								} else if (ConfigManager.isFreezeLava() && b.getType() == Material.LAVA) {
+									b.setType(Material.STONE);
 								} else if (ConfigManager.isKillSmallPlants() && 
 										(b.getType() == Material.LONG_GRASS || 
 										b.getType() == Material.RED_ROSE || 
@@ -98,7 +106,8 @@ public class WastelandTick extends BukkitRunnable {
 										b.getType() == Material.SUGAR_CANE_BLOCK)) || 
 										(ConfigManager.isKillLeavesVines() && (b.getType() == Material.LEAVES || 
 										b.getType() == Material.LEAVES_2 || 
-										b.getType() == Material.VINE))) {
+										b.getType() == Material.VINE)) || 
+										(ConfigManager.isExtinguishFire() && b.getType() == Material.FIRE)) {
 									b.breakNaturally();
 								} else if (ConfigManager.isCrackBrick() && b.getType() == Material.SMOOTH_BRICK) {
 									b.setData((byte) 2);
@@ -108,13 +117,21 @@ public class WastelandTick extends BukkitRunnable {
 					}
 				}
 				for (Entity e : entities) {
+					LivingEntity victim;
 					if (ConfigManager.isKillMobs() && e instanceof LivingEntity && !mobKillExempt.contains(e.getType())) {
-						LivingEntity victim = (LivingEntity) e;
-						victim.damage(ConfigManager.getEffectDamage() * 2, p);
+						victim = (LivingEntity) e;
 					} else if (ConfigManager.isKillPlayers() && !e.hasPermission("walkingwasteland.immune") && e instanceof Player) {
-						Player victim = (Player) e;
-						victim.damage(ConfigManager.getEffectDamage() * 2, p);
+						victim = (Player) e;
+					} else { break; }
+					
+					// Slow or weaken the mob or player, and then damage them
+					if (ConfigManager.isSlowMobs() && !victim.hasPotionEffect(PotionEffectType.SLOW)) {
+						victim.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 60, ConfigManager.getPotionMultiplier()));
 					}
+					if (ConfigManager.isWeakenMobs() && !victim.hasPotionEffect(PotionEffectType.WEAKNESS)) {
+						victim.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 60, ConfigManager.getPotionMultiplier()));
+					}
+					victim.damage(ConfigManager.getEffectDamage() * 2, p);
 				}
 			}
 		}
