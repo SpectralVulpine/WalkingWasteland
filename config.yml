@@ -9,11 +9,11 @@
 
 # effectPower: The relative speed with which blocks around Wastelanders are corrupted. 
 # May be an integer, 1 to 100, inclusive. Higher values cause a more powerful effect, but can cause more lag on larger servers. Defaults to 35.
-effectPower: 35
+effectPower: 40
 
 # effectRadius: The radius of the effect around a Wastelander. May be an integer, 1 or higher. Higher values are a larger radius. Defaults to 1.
 # WARNING: Setting this value high can cause massive lag! Be careful!
-effectRadius: 1
+effectRadius: 3
 
 
 # ---------------------------

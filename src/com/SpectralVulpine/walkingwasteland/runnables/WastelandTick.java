@@ -18,6 +18,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.SpectralVulpine.walkingwasteland.managers.ConfigManager;
+import com.SpectralVulpine.walkingwasteland.managers.ParticleManager;
 import com.SpectralVulpine.walkingwasteland.managers.WastelandManager;
 
 public class WastelandTick extends BukkitRunnable {
@@ -55,6 +56,7 @@ public class WastelandTick extends BukkitRunnable {
 							// Iterates through all blocks in a player-defined area, one row at a time
 							if (rng.nextInt(100) < ConfigManager.getEffectPower()) {
 								Block b = bottomCorner.clone().add(x, y, z).getBlock();
+								ParticleManager.wastelandAura(b.getLocation());
 								if (ConfigManager.isKillGrass() && b.getType() == Material.GRASS) {
 									b.setType(Material.DIRT);
 								} else if (ConfigManager.isFreezeWater() && 
