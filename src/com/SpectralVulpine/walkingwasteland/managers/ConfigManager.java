@@ -62,7 +62,7 @@ public class ConfigManager {
 		}
 		
 		try {
-			if (config.getInt("potionMultiplier") < 1 || config.getInt("potionMultiplier") > 127) {
+			if (config.getInt("potionMultiplier") < 1 || config.getInt("potionMultiplier") > 128) {
 				throw new Exception();
 			} else {
 				potionMultiplier = config.getInt("potionMultiplier");
@@ -291,7 +291,8 @@ public class ConfigManager {
 	}
 	
 	public static int getPotionMultiplier() {
-		return potionMultiplier;
+		// Returns the value - 1 so that the player can put 2 in and get Effect 2 out.
+		return potionMultiplier - 1;
 	}
 
 	public static boolean isCrackBrick() {

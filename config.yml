@@ -8,10 +8,10 @@
 # ---------------------------
 
 # effectPower: The relative speed with which blocks around Wastelanders are corrupted. 
-# May be an integer, 1 to 100, inclusive. Higher values cause a more powerful effect, but can cause more lag on larger servers. Defaults to 35.
+# May be an integer, 1 to 100, inclusive. Higher values cause a more powerful effect, but can cause more lag on larger servers. Defaults to 40.
 effectPower: 40
 
-# effectRadius: The radius of the effect around a Wastelander. May be an integer, 1 or higher. Higher values are a larger radius. Defaults to 1.
+# effectRadius: The radius of the effect around a Wastelander. May be an integer, 1 or higher. Higher values are a larger radius. Defaults to 3.
 # WARNING: Setting this value high can cause massive lag! Be careful!
 effectRadius: 3
 
@@ -68,10 +68,11 @@ freezeLava: true
 # ---------------------------
 
 # effectDamage: The amount of damage dealt per 5 ticks (0.25 seconds on most servers) from standing inside a Wastelander zone, in hearts. 
-# May be any value greater than 0. Defaults to 0.5 (half a heart).
-effectDamage: 0.5
+# May be any value greater than 0. Defaults to 1 (one heart).
+effectDamage: 1
 
-# potionMultiplier: The factor by which the above status effects are amplified. May be an integer greater than 1 and less than 127, inclusive. Defaults to 1.
+# potionMultiplier: The factor by which the above status effects are amplified; i.e. a potionMultiplier of 3 will lead to Weakness III.
+# May be an integer greater than 1 and less than 128, inclusive. Defaults to 1.
 potionMultiplier: 1
 
 # slowMobs: Whether or not Wastelanders afflict mobs around then with the "Slowness" status effect. May be true or false. Defaults to true.
