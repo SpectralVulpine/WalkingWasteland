@@ -53,15 +53,14 @@ public class CommandManager implements CommandExecutor{
 				} else {
 					sender.sendMessage(msg);
 				}
+			} else if (args.length == 1 && args[0].equalsIgnoreCase("toggle")) {
+				if (sender instanceof Player) {
+					WastelandManager.toggleWastelander((Player) sender);
+				} else {
+					sender.sendMessage("§8§l[Walking Wasteland] §cPlease specify a player name.");
+				}
 			} else if (args.length > 1 && args[0].equalsIgnoreCase("toggle")) {
 				Player p = Bukkit.getPlayer(args[1]);
-				if (args[1] == null && sender instanceof Player) {
-					WastelandManager.toggleWastelander((Player) sender);
-					return true;
-				} else if (args[1] == null && !(sender instanceof Player)) {
-					sender.sendMessage("§8§l[Walking Wasteland] §cPlease specify a player name.");
-					return true;
-				}
 				boolean completed = WastelandManager.toggleWastelander(p);
 				if (completed) {
 					if (WastelandManager.isWastelander(p)) {
