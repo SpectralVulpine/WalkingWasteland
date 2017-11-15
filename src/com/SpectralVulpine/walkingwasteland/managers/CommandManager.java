@@ -27,7 +27,6 @@ public class CommandManager implements CommandExecutor{
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		// TODO: Make more efficient to cut down on code reuse
 		if (cmd.getName().equalsIgnoreCase("wwl") && sender.hasPermission("walkingwasteland.commands")) {
 			if (args.length == 0 && sender instanceof Player) {
 				// By default, toggle the user's Wasteland status
