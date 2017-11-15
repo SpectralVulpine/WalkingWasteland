@@ -118,10 +118,9 @@ public class WastelandTick extends BukkitRunnable {
 				}
 				for (Entity e : entities) {
 					LivingEntity victim;
-					if (ConfigManager.isKillMobs() && e instanceof LivingEntity && !mobKillExempt.contains(e.getType())) {
+					if ((ConfigManager.isKillMobs() && e instanceof LivingEntity && !mobKillExempt.contains(e.getType())) || 
+							(ConfigManager.isKillPlayers() && e instanceof Player && !WastelandManager.isWastelander((Player) e) && !e.hasPermission("walkingwasteland.immune"))) {
 						victim = (LivingEntity) e;
-					} else if (ConfigManager.isKillPlayers() && !e.hasPermission("walkingwasteland.immune") && e instanceof Player) {
-						victim = (Player) e;
 					} else { break; }
 					
 					// Slow or weaken the mob or player, and then damage them
