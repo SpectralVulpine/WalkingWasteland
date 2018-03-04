@@ -20,6 +20,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.SpectralVulpine.walkingwasteland.managers.ConfigManager;
 import com.SpectralVulpine.walkingwasteland.managers.ParticleManager;
 import com.SpectralVulpine.walkingwasteland.managers.WastelandManager;
+import com.SpectralVulpine.walkingwasteland.worldguard.WorldGuardCompatibility;
 
 public class WastelandTick extends BukkitRunnable {
 
@@ -54,7 +55,7 @@ public class WastelandTick extends BukkitRunnable {
 					for (int y = 0; y < radius * 2 + 2; y++) { // y is one higher because the player is 2 blocks tall
 						for (int z = 0; z < radius * 2 + 1; z++) {
 							// Iterates through all blocks in a player-defined area, one row at a time
-							if (rng.nextInt(100) < ConfigManager.getEffectPower()) {
+							if (!WorldGuardCompatibility.blockIsInProtectedZone(p, bottomCorner.clone().add(x, y, z)) && rng.nextInt(100) < ConfigManager.getEffectPower()) {
 								Block b = bottomCorner.clone().add(x, y, z).getBlock();
 								ParticleManager.wastelandAura(b.getLocation());
 								if (ConfigManager.isKillGrass() && b.getType() == Material.GRASS) {
@@ -122,7 +123,7 @@ public class WastelandTick extends BukkitRunnable {
 							(ConfigManager.isKillPlayers() && e instanceof Player && !WastelandManager.isWastelander((Player) e) && !e.hasPermission("walkingwasteland.immune"))) {
 						victim = (LivingEntity) e;
 					} else { break; }
-					
+
 					// Slow or weaken the mob or player, and then damage them
 					if (ConfigManager.isSlowMobs() && !victim.hasPotionEffect(PotionEffectType.SLOW)) {
 						victim.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 60, ConfigManager.getPotionMultiplier()));

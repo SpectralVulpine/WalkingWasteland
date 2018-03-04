@@ -1,14 +1,20 @@
 name: WalkingWasteland
-version: 1.1.2
+author: SpectralVulpine
+website: https://www.spigotmc.org/threads/walking-wasteland.277053/
+version: 1.2.0
 main: com.SpectralVulpine.walkingwasteland.WalkingWasteland
 commands:
   wwl:
+    aliases: walkingwasteland
     description: Primary Walking Wasteland command, toggles Wasteland mode
-    usage: /wwl
+    usage: /wwl <command>
     permission: walkingwasteland.commands
     permission-message: You cannot use Walking Wasteland with your permission level.
 permissions:
   walkingwasteland.commands:
     default: op
+    description: Players with this permission can use the /wwl command and derivatives. 
   walkingwasteland.immune:
     default: op
+    description: Players with this permission are immune to damage caused by the Wasteland aura.
+softdepend: [WorldGuard]
